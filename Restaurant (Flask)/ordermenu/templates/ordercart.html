@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Food</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for each, every in orderlist.items() %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{each}}</td>
+                <td>{{every}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row"></th>
+                <td>Total price:</td>
+                <td> {{ totalprice }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+<div>
+    <form method="POST" action="" enctype="multipart/form-data" id="order-form">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{ form.tableno.label(class="form-control-label") }}
+                {% if form.tableno.errors %}
+                {{ form.tableno(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.tableno.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.tableno(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="row">
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info mr-1") }}
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Clear Cart</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Cart?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to clear the cart?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger" form="order-form" formaction="{{ url_for('clear_cart') }}">Clear Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector("button[type='submit'][formaction='{{ url_for('clear_cart') }}']").addEventListener("click", function() {
+        document.getElementById("order-form").querySelector('input[name="tableno"]').removeAttribute("required");
+    });
+</script>
+{% endblock content %}

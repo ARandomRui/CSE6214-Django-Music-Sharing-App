@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="navbar-expand-lg navbar-nav flex-row mr-auto tag-grid">
+  <a class="nav-item nav-link border spaceme tag-item click-yellow rounded" href="{{ url_for('menu') }}"> Menu </a>
+  {% for each in tags %} 
+    {% if each == "Chef's Recommendation" %}
+      <a class="nav-item border rounded spaceme click-yellow tag-long tag-item long-tag" href="{{ url_for('filtertag', tag = each) }}"> {{each}} </a>
+    {% else %}
+      <a class="nav-item border rounded spaceme click-yellow tag-item" href="{{ url_for('filtertag', tag = each) }}"> {{each}} </a>
+    {% endif %}
+  {% endfor %}
+  <a class="nav-item border rounded spaceme click-yellow tag-item ml-105" href="{{ url_for('filter_tags', tag = each) }}"> Filters </a>
+</div>
+<div class="row ezcontainer">
+    {% for food in menulists.items %}
+    {% if loop.index0 % 3 == 0 %}
+    </div>
+    <div class="row">
+    {% endif %}
+        <article class="media content-section col-4">
+          <img class="article-img" src="{{ url_for('static', filename='food_pics/' + food.image_file) }}">
+          <div class="media-body">
+            <h2><a class="article-title" href="{{ url_for('fooddetail', food_id=food.id) }}">{{ food.name }}</a></h2>
+            <h3 class="article-content text-blue lead h5 prices fw-bold"> RM {{food.price}} </h3>
+            <p class="article-content mr-10">{{ food.smoldescription }}</p>
+          </div>
+        </article>
+    {% endfor %} 
+</div>
+    {% for page_num in menulists.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if menulists.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('menu', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('menu', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+
+
+{% endblock content %}

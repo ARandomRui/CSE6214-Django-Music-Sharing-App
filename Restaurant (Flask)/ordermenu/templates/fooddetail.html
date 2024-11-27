@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='food_pics/' + food.image_file) }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a>{{ food.name }}</a>
+          <div>        
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('ordercart', food = food.name ) }}">Order Now</a>
+        {% if current_user.username == "admin" %}
+            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        {% endif %}
+        </div>
+      </div>
+      <p class="article-content">Tags: {% for each in food.tags %}{% if loop.index == loop.length %}{{ each.tagname }} {% else %}{{ each.tagname }}, {% endif %}{% endfor %}</p>
+      <p class="article-content">{{ food.description }}</p>
+    </div>
+  </article>
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Food?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_food', food_id=food.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,229 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+#flDebug, #flDebug * {
+  overflow-y: auto;
+  }
+
+#flflDebugPanelList {
+  overflow-y: auto;
+}
+
+
+/*----------BUTTONS FOR MENU-------------*/
+.filterbutt {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 16px 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #444444;
+  margin: 0 3px 10px 3px;
+  transition: all ease-in-out 0.3s;
+  background: #fff;
+  border: 2px solid #ffb03b;
+  border-radius: 50px;
+}
+
+.filterbutt:hover,
+.filterbutt:active {
+  color: #fff;
+  background: #ffb03b;
+}
+
+.tagsdropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.tagsdropbtn:hover, .tagsdropbtn:focus {
+  background-color: #2980B9;
+}
+
+.tagsdropdown {
+  position: relative;
+  display: inline-block;
+  left: 105px
+}
+
+.tagsdropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.tagsdropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.tagsdropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+.click-yellow {
+  background-color: transparent;
+}
+
+.click-yellow:hover,
+.click-yellow.active {
+  background-color: yellow;
+}
+
+.rounded {
+  border-radius: 20px;
+}
+
+.tag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 10px; /* Adjust the gap between tags as per your preference */
+  margin-bottom: 30px;
+}
+
+.tag-item {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.long-tag {
+  white-space: nowrap;
+  overflow: visible; /* Allow content overflow */
+}
+
+.ml-105 {
+  left: 105px !important;
+}
+.spaceme {
+  position: relative;
+  display: inline-block;
+  padding: 3px 16px !important; /* Adjust the padding as per your preference */
+  margin-right: 3px; /* Adjust the margin as per your preference */
+}
+
+.tag-long {
+  width: fit-content;
+}
+
+.ezcontainer {
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.lowerright {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.tag-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.tag-column {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.prices {
+  font-size: 22px;
+  font-weight: 500;
+}
+
